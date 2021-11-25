@@ -48,13 +48,6 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
     @Override
     public void onItemClick(int position) {
 
-        String[] numberList = edEntries.getText().toString().split(",");
-        Integer[] numbers = new Integer[numberList.length];
-
-        for (int i = 0; i < numberList.length; i++) {
-            numbers[i] = Integer.parseInt(numberList[i]);
-        }
-
         switch (sortAlgo.get(position)) {
             case "Merge Sort":
 
@@ -70,6 +63,14 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
                 //
 
             case "Bubble Sort":
+
+                String[] numberList = edEntries.getText().toString().split(",");
+                Integer[] numbers = new Integer[numberList.length];
+
+                for (int i = 0; i < numberList.length; i++) {
+                    numbers[i] = Integer.parseInt(numberList[i]);
+                }
+
                 BubbleSort(numbers,numbers.length);
                 sortedText.setText(Arrays.toString(numbers));
                 break;
