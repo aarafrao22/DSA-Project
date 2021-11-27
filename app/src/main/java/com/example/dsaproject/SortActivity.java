@@ -90,7 +90,7 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
         }
         for (int i = 0; i < length; i++) {
             if (numbers[i] < numbers[i + 1]) {
-                Integer temp = numbers[i];
+                int temp = numbers[i];
                 numbers[i] = numbers[i + 1];
                 numbers[i + 1] = temp;
             }
