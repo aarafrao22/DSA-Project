@@ -47,7 +47,9 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
 
     @Override
     public void onItemClick(int position) {
+            long start = System.currentTimeMillis();
 
+        edEntries.getText().toString();
         String[] numberList = edEntries.getText().toString().split(",");
         Integer[] numbers = new Integer[numberList.length];
 
@@ -61,13 +63,14 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
                 sortedText.setText(Arrays.toString(numbers));
                 break;
 
-            //
 
             case "Quick Sort":
                 quickSort(numbers, 0, numbers.length - 1);
                 sortedText.setText(Arrays.toString(numbers));
+
+
                 break;
-                //
+            //
 
             case "Insertion Sort":
                 InsertionSort(numbers, numbers.length);
@@ -87,6 +90,10 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
                 break;
             //
         }
+
+        long end = System.currentTimeMillis();
+        long f = end - start;
+        Toast.makeText(this, (int) f+" Milli Seconds", Toast.LENGTH_SHORT).show();
     }
 
 //    private void BubbleSort(Integer[] numbers, int length) {
@@ -203,7 +210,6 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
     }
 
     ////////////////////////////////////
-
 
 
     // QUICK
