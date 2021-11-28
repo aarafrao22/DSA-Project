@@ -1,6 +1,7 @@
 package com.example.dsaproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,8 +34,8 @@ public class SearchActivity extends AppCompatActivity implements RVClickInterfac
         sortAlgo.add("Linear Search");
 
         itemAdapter = new ItemAdapter(sortAlgo, this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerViewS.setLayoutManager(linearLayoutManager);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2,RecyclerView.VERTICAL,false);
+        recyclerViewS.setLayoutManager(gridLayoutManager);
         recyclerViewS.setAdapter(itemAdapter);
         itemAdapter.notifyDataSetChanged();
 
