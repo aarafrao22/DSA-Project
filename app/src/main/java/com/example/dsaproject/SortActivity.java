@@ -57,13 +57,16 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
 
         switch (sortAlgo.get(position)) {
             case "Merge Sort":
-                sort(numbers, 0, numbers.length - 1);
+                MergeSort(numbers, 0, numbers.length - 1);
                 sortedText.setText(Arrays.toString(numbers));
                 break;
 
             //
 
             case "Quick Sort":
+                quickSort(numbers, 0, numbers.length - 1);
+                sortedText.setText(Arrays.toString(numbers));
+                break;
                 //
 
             case "Insertion Sort":
@@ -79,7 +82,6 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
             //
 
             case "Bubble Sort":
-
                 BubbleSort(numbers, numbers.length);
                 sortedText.setText(Arrays.toString(numbers));
                 break;
@@ -87,19 +89,27 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
         }
     }
 
-    private void BubbleSort(Integer[] numbers, int length) {
-        if (length < 2) {
-            return;
-        }
-        for (int i = 0; i < length; i++) {
-            if (numbers[i] < numbers[i + 1]) {
-                int temp = numbers[i];
-                numbers[i] = numbers[i + 1];
-                numbers[i + 1] = temp;
-            }
-        }
-        BubbleSort(numbers, length - 1);
+//    private void BubbleSort(Integer[] numbers, int length) {
+//
+//        for (int i = 0; i < length; i++) {
+//            if (numbers[i] < numbers[i + 1]) {
+//                int temp = numbers[i];
+//                numbers[i] = numbers[i + 1];
+//                numbers[i + 1] = temp;
+//            }
+//        }
+//        BubbleSort(numbers, length - 1);
+//
+//    }
 
+    private void BubbleSort(Integer arr[],int length) {
+        for (int i = 0; i < length-1; i++)
+            for (int j = 0; j < length-i-1; j++)
+                if (arr[j] > arr[j+1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
     }
 
     private void SelectionSort(Integer[] numbers, int length) {
@@ -140,7 +150,7 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
         }
     }
 
-    //////////////////////////////////
+    //Merge
 
     private void merge(Integer arr[], int l, int m, int r) {
         int n1 = m - l + 1;
@@ -181,12 +191,12 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
         }
     }
 
-    private void sort(Integer[] arr, int l, int r) {
+    private void MergeSort(Integer[] arr, int l, int r) {
         if (l < r) {
             int m = l + (r - l) / 2;
 
-            sort(arr, l, m);
-            sort(arr, m + 1, r);
+            MergeSort(arr, l, m);
+            MergeSort(arr, m + 1, r);
 
             merge(arr, l, m, r);
         }
@@ -196,16 +206,16 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
 
 
 
-    ///////////////////////////////// QUICK
+    // QUICK
 
 
-    private void swap(int[] arr, int i, int j) {
+    private void swap(Integer[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
 
-    private int partition(int[] arr, int low, int high) {
+    private int partition(Integer[] arr, int low, int high) {
 
         int pivot = arr[high];
         int i = (low - 1);
@@ -221,7 +231,7 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
         return (i + 1);
     }
 
-    private void quickSort(int[] arr, int low, int high) {
+    private void quickSort(Integer[] arr, int low, int high) {
         if (low < high) {
             int pi = partition(arr, low, high);
 
@@ -230,7 +240,7 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
         }
     }
 
-    ////////////////////////////////////// Quick
+    //////////////////////////////////////
 
 }
 
