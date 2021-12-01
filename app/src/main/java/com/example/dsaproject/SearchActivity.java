@@ -44,37 +44,41 @@ public class SearchActivity extends AppCompatActivity implements RVClickInterfac
 
     @Override
     public void onItemClick(int position) {
-        long start = System.currentTimeMillis();
+        if (!edEntries.getText().toString().isEmpty()){
+            long start = System.currentTimeMillis();
 
-        edEntries.getText().toString();
-        int key = Integer.parseInt(edSearch.getText().toString());
+            edEntries.getText().toString();
+            int key = Integer.parseInt(edSearch.getText().toString());
 
-        String[] numberList = edEntries.getText().toString().split(",");
-        Integer[] numbers = new Integer[numberList.length];
+            String[] numberList = edEntries.getText().toString().split(",");
+            Integer[] numbers = new Integer[numberList.length];
 
-        for (int i = 0; i < numberList.length; i++) {
-            numbers[i] = Integer.parseInt(numberList[i]);
-        }
+            for (int i = 0; i < numberList.length; i++) {
+                numbers[i] = Integer.parseInt(numberList[i]);
+            }
 
 
-        switch (sortAlgo.get(position)) {
-            case "Binary\nSearch":
-                binarySearch(numbers, 0, numbers.length-1, key);
-                break;
+            switch (sortAlgo.get(position)) {
+                case "Binary\nSearch":
+                    binarySearch(numbers, 0, numbers.length-1, key);
+                    break;
 
-            case "Linear\nSearch":
-                int lS = linearSearch(numbers,key);
-                if (lS == -1){
-                    Toast.makeText(this, "Not Found", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(this, "Found at "+lS, Toast.LENGTH_SHORT).show();
-                }
-                break;
-        }
+                case "Linear\nSearch":
+                    int lS = linearSearch(numbers,key);
+                    if (lS == -1){
+                        Toast.makeText(this, "Not Found", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(this, "Found at "+lS, Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+            }
 
-        long end = System.currentTimeMillis();
-        long f = end - start;
-        Toast.makeText(this, "in " + f + " milli Seconds", Toast.LENGTH_SHORT).show();
+            long end = System.currentTimeMillis();
+            long f = end - start;
+            Toast.makeText(this, "in " + f + " milli Seconds", Toast.LENGTH_SHORT).show();
+        }else
+            Toast.makeText(this, "Pehlay kuch enter to kro", Toast.LENGTH_SHORT).show();
+
     }
 
     private void binarySearch(Integer[] arr, int first, int last, int key){

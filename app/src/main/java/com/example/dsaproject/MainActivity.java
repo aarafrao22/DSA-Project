@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent searchIntent = new Intent(MainActivity.this,SearchActivity.class);
                 startActivity(searchIntent);
-                Toast.makeText(MainActivity.this, "Search Clicked", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent sortIntent = new Intent(MainActivity.this,SortActivity.class);
                 startActivity(sortIntent);
-                Toast.makeText(MainActivity.this, "Sort Clicked", Toast.LENGTH_SHORT).show();
+
             }
         });
     }

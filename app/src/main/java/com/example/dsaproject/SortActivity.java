@@ -48,53 +48,55 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
 
     @Override
     public void onItemClick(int position) {
+        if (!edEntries.getText().toString().isEmpty()){
             long start = System.currentTimeMillis();
 
-        edEntries.getText().toString();
-        String[] numberList = edEntries.getText().toString().split(",");
-        Integer[] numbers = new Integer[numberList.length];
+            String[] numberList = edEntries.getText().toString().split(",");
+            Integer[] numbers = new Integer[numberList.length];
 
-        for (int i = 0; i < numberList.length; i++) {
-            numbers[i] = Integer.parseInt(numberList[i]);
-        }
+            for (int i = 0; i < numberList.length; i++) {
+                numbers[i] = Integer.parseInt(numberList[i]);
+            }
 
-        switch (sortAlgo.get(position)) {
-            case "Merge\nSort":
-                MergeSort(numbers, 0, numbers.length - 1);
-                sortedText.setText(Arrays.toString(numbers));
-                break;
-
-
-            case "Quick\nSort":
-                quickSort(numbers, 0, numbers.length - 1);
-                sortedText.setText(Arrays.toString(numbers));
+            switch (sortAlgo.get(position)) {
+                case "Merge\nSort":
+                    MergeSort(numbers, 0, numbers.length - 1);
+                    sortedText.setText(Arrays.toString(numbers));
+                    break;
 
 
-                break;
-            //
+                case "Quick\nSort":
+                    quickSort(numbers, 0, numbers.length - 1);
+                    sortedText.setText(Arrays.toString(numbers));
 
-            case "Insertion\nSort":
-                InsertionSort(numbers, numbers.length);
-                sortedText.setText(Arrays.toString(numbers));
-                break;
-            //
 
-            case "Selection\nSort":
-                SelectionSort(numbers, numbers.length);
-                sortedText.setText(Arrays.toString(numbers));
-                break;
-            //
+                    break;
+                //
 
-            case "Bubble\nSort":
-                BubbleSort(numbers, numbers.length);
-                sortedText.setText(Arrays.toString(numbers));
-                break;
-            //
-        }
+                case "Insertion\nSort":
+                    InsertionSort(numbers, numbers.length);
+                    sortedText.setText(Arrays.toString(numbers));
+                    break;
+                //
 
-        long end = System.currentTimeMillis();
-        long f = end - start;
-        Toast.makeText(this, (int) f+" Milli Seconds", Toast.LENGTH_SHORT).show();
+                case "Selection\nSort":
+                    SelectionSort(numbers, numbers.length);
+                    sortedText.setText(Arrays.toString(numbers));
+                    break;
+                //
+
+                case "Bubble\nSort":
+                    BubbleSort(numbers, numbers.length);
+                    sortedText.setText(Arrays.toString(numbers));
+                    break;
+                //
+            }
+
+            long end = System.currentTimeMillis();
+            long f = end - start;
+            Toast.makeText(this, (int) f+" Milli Seconds", Toast.LENGTH_SHORT).show();
+        }else
+            Toast.makeText(this, "Enter Something pehlay", Toast.LENGTH_SHORT).show();
     }
 
 //    private void BubbleSort(Integer[] numbers, int length) {
