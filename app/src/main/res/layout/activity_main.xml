@@ -26,6 +26,7 @@
             android:layout_height="match_parent"
             android:layout_margin="2dp"
             android:text="SOrt"
+            android:background="@drawable/bgbutton"
             tools:layout_editor_absoluteX="99dp"
             tools:layout_editor_absoluteY="154dp" />
 
@@ -35,6 +36,7 @@
             android:layout_height="match_parent"
             android:layout_margin="2dp"
             android:text="Search"
+            android:background="@drawable/bgbutton"
             tools:layout_editor_absoluteX="242dp"
             tools:layout_editor_absoluteY="154dp" />
     </LinearLayout>

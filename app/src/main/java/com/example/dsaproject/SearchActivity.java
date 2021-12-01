@@ -30,8 +30,8 @@ public class SearchActivity extends AppCompatActivity implements RVClickInterfac
         edSearch = findViewById(R.id.edSearch);
 
         sortAlgo = new ArrayList<>();
-        sortAlgo.add("Binary Search");
-        sortAlgo.add("Linear Search");
+        sortAlgo.add("Binary\nSearch");
+        sortAlgo.add("Linear\nSearch");
 
         itemAdapter = new ItemAdapter(sortAlgo, this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2,RecyclerView.VERTICAL,false);
@@ -58,15 +58,18 @@ public class SearchActivity extends AppCompatActivity implements RVClickInterfac
 
 
         switch (sortAlgo.get(position)) {
-            case "Binary Search":
-                int result = binarySearch(numbers, 0, numbers.length - 1, key);
-                if (result == -1)
-                    Toast.makeText(this, "Element not exist", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(this, "Element Exist at Index " + result, Toast.LENGTH_SHORT).show();
+            case "Binary\nSearch":
+                binarySearch(numbers, 0, numbers.length-1, key);
                 break;
 
-            case "Linear Search":
+            case "Linear\nSearch":
+                int lS = linearSearch(numbers,key);
+                if (lS == -1){
+                    Toast.makeText(this, "Not Found", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this, "Found at "+lS, Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
 
         long end = System.currentTimeMillis();
@@ -74,19 +77,30 @@ public class SearchActivity extends AppCompatActivity implements RVClickInterfac
         Toast.makeText(this, "in " + f + " milli Seconds", Toast.LENGTH_SHORT).show();
     }
 
-    private int binarySearch(Integer[] arr, int l, int r, int x) {
-        if (r >= l) {
-            int mid = l + r / 2;
-
-            if (arr[mid] == x)
-                return mid;
-
-            if (arr[mid] > x)
-                return binarySearch(arr, l, mid - 1, x);
-
-            return binarySearch(arr, mid + 1, r, x);
-        } else {
-            return -1;
+    private void binarySearch(Integer[] arr, int first, int last, int key){
+        int mid = (first + last)/2;
+        while( first <= last ){
+            if ( arr[mid] < key ){
+                first = mid + 1;
+            }else if ( arr[mid] == key ){
+                Toast.makeText(this, "Element is found at index: " + mid, Toast.LENGTH_SHORT).show();
+                break;
+            }else{
+                last = mid - 1;
+            }
+            mid = (first + last)/2;
         }
+        if ( first > last ){
+            Toast.makeText(this, "Element not found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private int linearSearch(Integer[] arr, int key){
+        for(int i=0;i<arr.length;i++){
+            if(arr[i] == key){
+                return i;
+            }
+        }
+        return -1;
     }
 }

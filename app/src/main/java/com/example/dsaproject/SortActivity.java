@@ -33,11 +33,11 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
         edEntries = findViewById(R.id.edEntries);
 
         sortAlgo = new ArrayList<>();
-        sortAlgo.add("Merge Sort");
-        sortAlgo.add("Quick Sort");
-        sortAlgo.add("Insertion Sort");
-        sortAlgo.add("Selection Sort");
-        sortAlgo.add("Bubble Sort");
+        sortAlgo.add("Merge\nSort");
+        sortAlgo.add("Quick\nSort");
+        sortAlgo.add("Insertion\nSort");
+        sortAlgo.add("Selection\nSort");
+        sortAlgo.add("Bubble\nSort");
 
         itemAdapter = new ItemAdapter(sortAlgo, this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2,RecyclerView.VERTICAL,false);
@@ -59,13 +59,13 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
         }
 
         switch (sortAlgo.get(position)) {
-            case "Merge Sort":
+            case "Merge\nSort":
                 MergeSort(numbers, 0, numbers.length - 1);
                 sortedText.setText(Arrays.toString(numbers));
                 break;
 
 
-            case "Quick Sort":
+            case "Quick\nSort":
                 quickSort(numbers, 0, numbers.length - 1);
                 sortedText.setText(Arrays.toString(numbers));
 
@@ -73,19 +73,19 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
                 break;
             //
 
-            case "Insertion Sort":
+            case "Insertion\nSort":
                 InsertionSort(numbers, numbers.length);
                 sortedText.setText(Arrays.toString(numbers));
                 break;
             //
 
-            case "Selection Sort":
+            case "Selection\nSort":
                 SelectionSort(numbers, numbers.length);
                 sortedText.setText(Arrays.toString(numbers));
                 break;
             //
 
-            case "Bubble Sort":
+            case "Bubble\nSort":
                 BubbleSort(numbers, numbers.length);
                 sortedText.setText(Arrays.toString(numbers));
                 break;

@@ -23,8 +23,10 @@
         android:id="@+id/edEntries"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:hint="Comma Separated Input"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:background="@drawable/roundedborders"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -33,7 +35,8 @@
         android:id="@+id/txtSorted"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
+        android:layout_margin="8dp"
+        android:background="@drawable/bgbutton"
         android:padding="10dp"
         android:textColor="@color/white"
         android:text="Sorted Array will be visible here"/>
@@ -43,7 +46,6 @@
 
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/recyclerViewS"
-      android:foregroundGravity="center"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_margin="8dp"
