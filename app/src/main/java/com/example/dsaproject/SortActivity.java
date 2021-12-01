@@ -1,10 +1,12 @@
 package com.example.dsaproject;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -94,9 +96,23 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
 
             long end = System.currentTimeMillis();
             long f = end - start;
-            Toast.makeText(this, (int) f+" Milli Seconds", Toast.LENGTH_SHORT).show();
+            timeMessage((int) f+" Milli Seconds");
         }else
             Toast.makeText(this, "Enter Something pehlay", Toast.LENGTH_SHORT).show();
+    }
+
+    private void timeMessage(String s) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle("Time Consumed")
+                .setIcon(R.drawable.ic_baseline_timer_24)
+                .setMessage(s)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).create();
+        alertDialog.show();
     }
 
 //    private void BubbleSort(Integer[] numbers, int length) {

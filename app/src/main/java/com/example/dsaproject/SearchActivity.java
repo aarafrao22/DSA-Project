@@ -1,10 +1,12 @@
 package com.example.dsaproject;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -75,10 +77,24 @@ public class SearchActivity extends AppCompatActivity implements RVClickInterfac
 
             long end = System.currentTimeMillis();
             long f = end - start;
-            Toast.makeText(this, "in " + f + " milli Seconds", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "in " + f + " milli Seconds", Toast.LENGTH_SHORT).show();
+            timeMessage("in " + f + " milli Seconds");
         }else
             Toast.makeText(this, "Pehlay kuch enter to kro", Toast.LENGTH_SHORT).show();
 
+    }
+    private void timeMessage(String s) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle("Time Consumed")
+                .setIcon(R.drawable.ic_baseline_timer_24)
+                .setMessage(s)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).create();
+        alertDialog.show();
     }
 
     private void binarySearch(Integer[] arr, int first, int last, int key){
