@@ -36,7 +36,7 @@ public class SearchActivity extends AppCompatActivity implements RVClickInterfac
         sortAlgo.add("Linear\nSearch");
 
         itemAdapter = new ItemAdapter(sortAlgo, this);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2,RecyclerView.VERTICAL,false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, RecyclerView.VERTICAL, false);
         recyclerViewS.setLayoutManager(gridLayoutManager);
         recyclerViewS.setAdapter(itemAdapter);
         itemAdapter.notifyDataSetChanged();
@@ -46,43 +46,47 @@ public class SearchActivity extends AppCompatActivity implements RVClickInterfac
 
     @Override
     public void onItemClick(int position) {
-        if (!edEntries.getText().toString().isEmpty()){
-            long start = System.currentTimeMillis();
+        if ((!edSearch.getText().toString().isEmpty())) {
+            if (!edEntries.getText().toString().isEmpty()) {
+                long start = System.currentTimeMillis();
 
-            edEntries.getText().toString();
-            int key = Integer.parseInt(edSearch.getText().toString());
+                edEntries.getText().toString();
+                int key = Integer.parseInt(edSearch.getText().toString());
 
-            String[] numberList = edEntries.getText().toString().split(",");
-            Integer[] numbers = new Integer[numberList.length];
+                String[] numberList = edEntries.getText().toString().split(",");
+                Integer[] numbers = new Integer[numberList.length];
 
-            for (int i = 0; i < numberList.length; i++) {
-                numbers[i] = Integer.parseInt(numberList[i]);
-            }
+                for (int i = 0; i < numberList.length; i++) {
+                    numbers[i] = Integer.parseInt(numberList[i]);
+                }
 
+                switch (sortAlgo.get(position)) {
 
-            switch (sortAlgo.get(position)) {
-                case "Binary\nSearch":
-                    binarySearch(numbers, 0, numbers.length-1, key);
-                    break;
+                    case "Binary\nSearch":
+                        binarySearch(numbers, 0, numbers.length - 1, key);
+                        break;
 
-                case "Linear\nSearch":
-                    int lS = linearSearch(numbers,key);
-                    if (lS == -1){
-                        Toast.makeText(this, "Not Found", Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(this, "Found at "+lS, Toast.LENGTH_SHORT).show();
-                    }
-                    break;
-            }
+                    case "Linear\nSearch":
+                        int lS = linearSearch(numbers, key);
+                        if (lS == -1) {
+                            Toast.makeText(this, "Not Found", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this, "Found at " + lS, Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                }
 
-            long end = System.currentTimeMillis();
-            long f = end - start;
+                long end = System.currentTimeMillis();
+                long f = end - start;
 //            Toast.makeText(this, "in " + f + " milli Seconds", Toast.LENGTH_SHORT).show();
-            timeMessage("in " + f + " milli Seconds");
-        }else
-            Toast.makeText(this, "Pehlay kuch enter to kro", Toast.LENGTH_SHORT).show();
+                timeMessage("in " + f + " milli Seconds");
+            } else
+                Toast.makeText(this, "Pehlay kuch enter to kro", Toast.LENGTH_SHORT).show();
+        } else
+            Toast.makeText(this, "Search bhi karna hota hai", Toast.LENGTH_SHORT).show();
 
     }
+
     private void timeMessage(String s) {
         AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setTitle("Time Consumed")
@@ -97,27 +101,27 @@ public class SearchActivity extends AppCompatActivity implements RVClickInterfac
         alertDialog.show();
     }
 
-    private void binarySearch(Integer[] arr, int first, int last, int key){
-        int mid = (first + last)/2;
-        while( first <= last ){
-            if ( arr[mid] < key ){
+    private void binarySearch(Integer[] arr, int first, int last, int key) {
+        int mid = (first + last) / 2;
+        while (first <= last) {
+            if (arr[mid] < key) {
                 first = mid + 1;
-            }else if ( arr[mid] == key ){
+            } else if (arr[mid] == key) {
                 Toast.makeText(this, "Element is found at index: " + mid, Toast.LENGTH_SHORT).show();
                 break;
-            }else{
+            } else {
                 last = mid - 1;
             }
-            mid = (first + last)/2;
+            mid = (first + last) / 2;
         }
-        if ( first > last ){
+        if (first > last) {
             Toast.makeText(this, "Element not found", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private int linearSearch(Integer[] arr, int key){
-        for(int i=0;i<arr.length;i++){
-            if(arr[i] == key){
+    private int linearSearch(Integer[] arr, int key) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == key) {
                 return i;
             }
         }

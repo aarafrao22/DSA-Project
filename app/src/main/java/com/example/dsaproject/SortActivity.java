@@ -97,16 +97,23 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
             long end = System.currentTimeMillis();
             long f = end - start;
             timeMessage((int) f+" Milli Seconds");
-        }else
-            Toast.makeText(this, "Enter Something pehlay", Toast.LENGTH_SHORT).show();
+        }else {
+            timeMessage("پہلے کچھ ایڈ تو کرو بھائی");
+        }
     }
 
     private void timeMessage(String s) {
         AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setTitle("Time Consumed")
                 .setIcon(R.drawable.ic_baseline_timer_24)
+                .setNegativeButton("نہیں", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
                 .setMessage(s)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton("ٹھیک ہے", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
