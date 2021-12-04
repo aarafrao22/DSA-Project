@@ -20,6 +20,7 @@ import java.util.List;
 public class SortActivity extends AppCompatActivity implements RVClickInterface {
 
     List<String> sortAlgo;
+    List<Integer> imageList;
     RecyclerView recyclerViewS;
     EditText edEntries;
     ItemAdapter itemAdapter;
@@ -41,7 +42,14 @@ public class SortActivity extends AppCompatActivity implements RVClickInterface 
         sortAlgo.add("Selection\nSort");
         sortAlgo.add("Bubble\nSort");
 
-        itemAdapter = new ItemAdapter(sortAlgo, this);
+        imageList = new ArrayList<>();
+        imageList.add(R.drawable.ic_baseline_merge_type_24);
+        imageList.add(R.drawable.ic_baseline_quickreply_24);
+        imageList.add(R.drawable.ic_baseline_insertion);
+        imageList.add(R.drawable.ic_baseline_selection);
+        imageList.add(R.drawable.ic_baseline_bubble_chart_24);
+
+        itemAdapter = new ItemAdapter(sortAlgo, imageList,this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2,RecyclerView.VERTICAL,false);
         recyclerViewS.setLayoutManager(gridLayoutManager);
         recyclerViewS.setAdapter(itemAdapter);

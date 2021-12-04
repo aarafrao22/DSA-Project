@@ -17,6 +17,7 @@ import java.util.List;
 
 public class SearchActivity extends AppCompatActivity implements RVClickInterface {
     List<String> sortAlgo;
+    List<Integer> imageList;
     RecyclerView recyclerViewS;
     EditText edEntries, edSearch;
     ItemAdapter itemAdapter;
@@ -35,7 +36,11 @@ public class SearchActivity extends AppCompatActivity implements RVClickInterfac
         sortAlgo.add("Binary\nSearch");
         sortAlgo.add("Linear\nSearch");
 
-        itemAdapter = new ItemAdapter(sortAlgo, this);
+        imageList = new ArrayList<>();
+        imageList.add(R.drawable.ic_baseline_center_focus_strong_24);
+        imageList.add(R.drawable.ic_baseline_linear);
+
+        itemAdapter = new ItemAdapter(sortAlgo, imageList,this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, RecyclerView.VERTICAL, false);
         recyclerViewS.setLayoutManager(gridLayoutManager);
         recyclerViewS.setAdapter(itemAdapter);
