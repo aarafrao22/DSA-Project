@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnSort, btnSearch;
+    Button btnSort, btnSearch, btnLinkedList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sortIntent = new Intent(MainActivity.this,SortActivity.class);
+                startActivity(sortIntent);
+
+            }
+        });
+        btnLinkedList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent sortIntent = new Intent(MainActivity.this,SortActivity.class);
